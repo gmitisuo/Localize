@@ -13,7 +13,7 @@ namespace Localize.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/Registro/[controller]")]
+    [Route("api/[controller]")]
 
     public class EmpresaController : ControllerBase
     {
@@ -71,7 +71,7 @@ namespace Localize.Controllers
             return Ok(empresas);
         }
 
-        [HttpPost("buscar_cnpj/{cnpj}")]
+        [HttpPost("cadastrar_cnpj/{cnpj}")]
         public async Task<IActionResult> BuscarEmpresaPorCnpj(string cnpj)
         {
             var client = _httpClientFactory.CreateClient();

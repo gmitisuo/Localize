@@ -8,21 +8,21 @@ using Localize.Services;
 
 namespace Localize.Controllers
 {
-    [Route("api/Login/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class RegistroController : ControllerBase
+    public class UsuarioController : ControllerBase
     {
         private readonly TtDbContext _context;
         private readonly TokenService _tokenService;
 
-        public RegistroController(TtDbContext context, TokenService tokenService)
+        public UsuarioController(TtDbContext context, TokenService tokenService)
         {
             _context = context;
             _tokenService = tokenService;
         }
 
 
-        [HttpPost("Resgister")]
+        [HttpPost("cadastro")]
         public async Task<IActionResult> Register(UsuarioRegistro modelo)
         {
             //Verifica se o email já foi cadastrado
