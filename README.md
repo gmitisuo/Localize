@@ -16,9 +16,9 @@ Este programa usa o Swagger para acessar os Endpoints:
 3. Lista das Empresas(`api/Empresa/listar_empresas`): Lista todas as empresas cadastradas pelo usuario
 4. Cadastro das Empresas(`api/Empresa/cadastrar_cnpj`): Pelo Cnpj busca as informações na ReceitaWs e cadastra as informações
 ### Fluxograma
-![Alt text](https://github.com/gmitisuo/Localize/Fluxograma.jpeg)
+![Fluxograma](https://github.com/gmitisuo/Localize/blob/master/Fluxograma.jpeg)
 
-![Alt text](https://github.com/gmitisuo/Localize/Diagrama_de_Banco_de_dados.jpeg)
+![Diagrama de Banco de dados](https://github.com/gmitisuo/Localize/blob/master/Diagrama_de_Banco_de_dados.jpeg)
 
 
 ## Melhorias
