@@ -68,7 +68,6 @@ namespace Localize.Models
         [Required]
         [StringLength(10)]
         public int EmpresaId { get; set; }
-        [JsonIgnore]
         public Empresa Empresa { get; set; }
 
     }

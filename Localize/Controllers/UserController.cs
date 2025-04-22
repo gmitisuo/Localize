@@ -108,11 +108,12 @@ namespace Localize.Controllers
                     PropertyNameCaseInsensitive = true
                 });
                 //Verificando se a empresa ja foi cadastrada por outro usuario
-                var resposta = await _context.Empresas.FirstOrDefaultAsync(e => e.CNPJ == dados.CNPJ);
+                
+                var empresaexiste = await _context.Empresas.FirstOrDefaultAsync(e => e.CNPJ == dados.CNPJ);
                 //Se não tiver registrado inicia o registro da nova empresa
-                if (resposta == null)
+                if (empresaexiste == null)
                 {
-                    var empresa = new Empresa
+                    empresaexiste = new Empresa
                     {
                         NomeEmpresarial = dados.Nome,
                         NomeFantasia = dados.Fantasia,
@@ -136,18 +137,18 @@ namespace Localize.Controllers
                         UsuarioId = usuarioid
                     };
                     //Salva as novas informações no banco de dados
-                    _context.Empresas.Add(empresa);
+                    _context.Empresas.Add(empresaexiste);
                     _context.SaveChanges();
                 }
                 //Verifica se já há uma relação com o Usuario
-                bool relacaoExiste = await _context.UsuariosEmpresas.AnyAsync(ue => ue.UsuarioId == usuarioid && ue.EmpresaId == resposta.Id);
+                bool relacaoExiste = await _context.UsuariosEmpresas.AnyAsync(ue => ue.UsuarioId == usuarioid && ue.EmpresaId == empresaexiste.Id);
                 //Se não houver cria uma nova relação
                 if (!relacaoExiste)
                 {
                     var usuarioempresa = new UsuarioEmpresa
                     {
                         UsuarioId = usuarioid,
-                        EmpresaId = resposta.Id
+                        EmpresaId = empresaexiste.Id
                     };
                     //Salva as novas informações no banco de dados
                     _context.UsuariosEmpresas.Add(usuarioempresa);
